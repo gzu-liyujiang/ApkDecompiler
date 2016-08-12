@@ -1,14 +1,16 @@
 package cn.qqtheme.ApkDec;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.net.URL;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by liyujiang on 16-8-12.
  */
 public class MainWindow {
+    private String appPath = Constants.APP_PATH;
     private String toolPath = Constants.TOOL_PATH;
     private JPanel panelRoot;
     private JTextField inputApk;
@@ -17,33 +19,73 @@ public class MainWindow {
     private JButton buttonJdGui;
     private JTextArea logArea;
     private JButton buttonOpenFile;
+    private JButton logClear;
     private String apkPath;
 
     private MainWindow() {
-        if (!toolPath.endsWith("/")) {
-            toolPath += "/";
-        }
         logArea.append("\n\n");
+        //获取当前执行的jar包的绝对路径
+        String path = MainWindow.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        appPath = new java.io.File(path).getParentFile().getAbsolutePath();
+        appPath = appPath.replaceAll("\\\\", "/");
+        try {
+            appPath = java.net.URLDecoder.decode(appPath, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        if (!appPath.endsWith("/")) {
+            appPath += "/";
+        }
+        toolPath = appPath + "tools/";
+        logArea.append("程序包路径为：" + appPath + "\n");
         //This inspection reports all anonymous classes which can be replaced with lambda expressions
         //Lambda syntax is not supported under Java 1.7 or earlier JVMs.
-        buttonOpenFile.addActionListener(e -> chooseApk());
-        buttonDecodeXml.addActionListener(e -> {
-            if (apkValid()) {
-
+        buttonOpenFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainWindow.this.chooseApk();
             }
         });
-        buttonDecodeJar.addActionListener(e -> {
-            if (apkValid()) {
-
+        buttonDecodeXml.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (MainWindow.this.apkValid()) {
+                    String dirPath = apkPath.replace(".apk", "");
+                    String cmd = toolPath + "apktool/apktool --advanced decode --force --output " + dirPath + " --no-src --frame-path " + toolPath + "apktool/ " + apkPath;
+                    new CmdThread(logArea, cmd).start();
+                }
             }
         });
-        buttonJdGui.addActionListener(e -> {
-            String command = toolPath + "tools/jd-gui";
-            logArea.append("exec command: " + command + "\n");
-            try {
-                Runtime.getRuntime().exec(command);
-            } catch (IOException e1) {
-                logArea.append("error: " + e1 + "\n");
+        buttonDecodeJar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (MainWindow.this.apkValid()) {
+                    String jarPath = apkPath.replace("apk", "jar");
+                    String cmd = toolPath + "dex2jar/d2j-dex2jar.sh" + " --force --output " + jarPath + " --verbose " + apkPath;
+                    new CmdThread(logArea, cmd).start();
+                }
+            }
+        });
+        buttonJdGui.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String cmd = toolPath + "jd-gui";
+                if (apkPath != null) {
+                    String jarPath = apkPath.replace("apk", "jar");
+                    cmd += " " + jarPath;
+                }
+                logArea.append("执行命令：" + cmd + "\n");
+                try {
+                    Runtime.getRuntime().exec(cmd);
+                } catch (IOException e1) {
+                    logArea.append("出错了：" + e1 + "\n");
+                }
+            }
+        });
+        logClear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                logArea.setText("欢迎使用♪(^∇^*)使用方法可点击菜单查看帮助。\n\n");
             }
         });
     }
@@ -51,16 +93,12 @@ public class MainWindow {
     public static void main(String[] args) {
         JFrame frame = new JFrame(Constants.APP_NAME + Constants.APP_VERSION);
         MainWindow mainWindow = new MainWindow();
-        URL iconUrl = MainWindow.class.getResource("/icons/liyujiang.png");
-        mainWindow.logArea.append("icon path: " + iconUrl + "\n");
-        if (iconUrl != null) {
-            frame.setIconImage(new ImageIcon(iconUrl).getImage());
-        }
+        frame.setIconImage(new ImageIcon(mainWindow.appPath + "icons/default.png").getImage());
         frame.setContentPane(mainWindow.panelRoot);
         frame.setJMenuBar(mainWindow.createMenuBar());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setSize(new Dimension(480, 320));
+        frame.setSize(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
         frame.setResizable(false);//不允许缩放
         frame.setLocationRelativeTo(null);//居中
         frame.setVisible(true);
@@ -70,9 +108,19 @@ public class MainWindow {
         JMenuBar menuBar = new JMenuBar();
         JMenu menuMain = new JMenu("菜单");
         JMenuItem menuHelp = new JMenuItem("帮助");
-        menuHelp.addActionListener(e -> help());
+        menuHelp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainWindow.this.help();
+            }
+        });
         JMenuItem menuAbout = new JMenuItem("关于");
-        menuAbout.addActionListener(e -> about());
+        menuAbout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainWindow.this.about();
+            }
+        });
         menuMain.add(menuHelp);
         menuMain.add(menuAbout);
         menuBar.add(menuMain);
@@ -89,9 +137,12 @@ public class MainWindow {
 
     private void about() {
         JOptionPane.showMessageDialog(panelRoot,
-                "开发工具：Intellij IDEA 2016.2.1\n\n" +
+                "开发工具：Intellij IDEA 2016.2.1\n" +
+                        "测试系统：Ubuntu/ChaletOS 16.04\n\n" +
                         "制作：穿青人@李玉江[QQ:1032694760]",
-                "关于", JOptionPane.INFORMATION_MESSAGE);
+                "关于", JOptionPane.INFORMATION_MESSAGE,
+                new ImageIcon(appPath + "icons/liyujiang.png")
+        );
     }
 
     private void chooseApk() {
@@ -103,7 +154,8 @@ public class MainWindow {
         int flag = chooser.showOpenDialog(panelRoot);
         if (flag == JFileChooser.APPROVE_OPTION) {
             apkPath = chooser.getSelectedFile().getAbsolutePath();
-            inputApk.setText(apkPath.replaceAll("\\\\", "/"));
+            apkPath = apkPath.replaceAll("\\\\", "/");
+            inputApk.setText(apkPath);
         }
     }
 

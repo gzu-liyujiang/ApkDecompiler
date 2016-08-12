@@ -6,5 +6,8 @@ package cn.qqtheme.ApkDec;
 public class Constants {
     public static final String APP_NAME = "Apk反编译助手";
     public static final String APP_VERSION = "1.0";
-    public static final String TOOL_PATH = "/media/liyujiang/编程/java-project/ApkDec/";
+    public static final int WINDOW_WIDTH = 480;
+    public static final int WINDOW_HEIGHT = 320;
+    public static final String APP_PATH = "/opt/ApkDec/";
+    public static final String TOOL_PATH = "/opt/ApkDec/tools/";
 }

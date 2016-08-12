@@ -69,16 +69,8 @@ public class MainWindow {
         buttonJdGui.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String cmd = toolPath + "jd-gui";
-                if (apkPath != null) {
-                    String jarPath = apkPath.replace("apk", "jar");
-                    cmd += " " + jarPath;
-                }
-                logArea.append("执行命令：" + cmd + "\n");
-                try {
-                    Runtime.getRuntime().exec(cmd);
-                } catch (IOException e1) {
-                    logArea.append("出错了：" + e1 + "\n");
+                if (MainWindow.this.apkValid()) {
+                    openJdGui(apkPath.replace("apk", "jar"));
                 }
             }
         });
@@ -107,6 +99,13 @@ public class MainWindow {
     private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
         JMenu menuMain = new JMenu("菜单");
+        JMenuItem menuJdGui = new JMenuItem("JD-GUI");
+        menuJdGui.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainWindow.this.openJdGui(null);
+            }
+        });
         JMenuItem menuHelp = new JMenuItem("帮助");
         menuHelp.addActionListener(new ActionListener() {
             @Override
@@ -121,6 +120,7 @@ public class MainWindow {
                 MainWindow.this.about();
             }
         });
+        menuMain.add(menuJdGui);
         menuMain.add(menuHelp);
         menuMain.add(menuAbout);
         menuBar.add(menuMain);
@@ -131,7 +131,7 @@ public class MainWindow {
         JOptionPane.showMessageDialog(panelRoot,
                 "1、点击浏览选择一个需要反编译的apk文件；\n" +
                         "2、点击反编译xml以及dex2jar；\n" +
-                        "3、点击打开jd-gui，查看反编译后的jar的源代码。\n",
+                        "3、点击用jd-gui打开，查看反编译后的jar的源代码。\n",
                 "帮助", JOptionPane.QUESTION_MESSAGE,
                 new ImageIcon(appPath + "icons/liyujiang.png"));
     }
@@ -166,6 +166,19 @@ public class MainWindow {
             return false;
         }
         return true;
+    }
+
+    private void openJdGui(String path) {
+        String cmd = toolPath + "jd-gui";
+        if (path != null && path.trim().length() > 0) {
+            cmd += " " + path;
+        }
+        logArea.append("执行命令：" + cmd + "\n");
+        try {
+            Runtime.getRuntime().exec(cmd);
+        } catch (IOException e1) {
+            logArea.append("出错了：" + e1 + "\n");
+        }
     }
 
 }

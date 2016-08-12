@@ -6,4 +6,4 @@ echo "$current_file"
 echo "$dir_name"
 cd "$dir_name"
 
-java -jar ./out/artifacts/ApkDec_jar/ApkDec.jar
+java -jar ./ApkDec.jar

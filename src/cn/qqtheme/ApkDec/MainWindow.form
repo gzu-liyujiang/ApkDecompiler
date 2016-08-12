@@ -36,7 +36,7 @@
           <component id="1a548" class="javax.swing.JTextArea" binding="logArea">
             <constraints/>
             <properties>
-              <caretPosition value="0"/>
+              <caretPosition value="25"/>
               <columns value="0"/>
               <editable value="false"/>
               <lineWrap value="true"/>
@@ -82,7 +82,7 @@
             </constraints>
             <properties>
               <margin top="5" left="21" bottom="5" right="21"/>
-              <text value="打开jd-gui"/>
+              <text value="用jd-gui打开"/>
               <toolTipText value="打开jd-gui，查看jar里的源代码，从而另存为java文件"/>
             </properties>
           </component>

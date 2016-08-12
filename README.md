@@ -1,4 +1,4 @@
-#ApkDec
+#ApkDecompiler
 
 1、反编译资源（可能需要有此框架才能正常反编译：framework-res.apk）
 ./apktool/apktool d ./test.apk

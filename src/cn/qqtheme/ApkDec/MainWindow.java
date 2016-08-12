@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * Created by liyujiang on 16-8-12.
@@ -20,18 +21,19 @@ public class MainWindow {
     private JButton buttonDecodeXml;
     private JButton buttonDecodeJar;
     private JButton buttonJdGui;
+    private JTextArea logArea;
     private String apkPath;
 
     public MainWindow() {
         buttonAbout.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(panelRoot, "开发工具：Intellij IDEA 2016.2.1\n\n" +
-                        "作者：穿青人@李玉江[QQ:1032694760]");
+                        "制作：穿青人@李玉江[QQ:1032694760]");
             }
         });
         buttonConfig.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showInputDialog(panelRoot, "请输入dex2jar根目录路径", "/home/");
+                Object input = JOptionPane.showInputDialog(panelRoot, "请输入工具包根目录路径", "/home/liyujiang/Apps/ApkDecode/");
             }
         });
         buttonChoose.addActionListener(new ActionListener() {
@@ -64,7 +66,14 @@ public class MainWindow {
         });
         buttonJdGui.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                String command = "/home/liyujiang/Apps/ApkDecode/gd-gui/gd-gui";
+                try {
+                    Runtime.getRuntime().exec(command);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
             }
+
         });
     }
 
@@ -73,8 +82,7 @@ public class MainWindow {
         frame.setContentPane(new MainWindow().panelRoot);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setSize(480, 320);
-        frame.setResizable(false);//不允许缩放
+        frame.setMinimumSize(new Dimension(480, 320));
         frame.setLocationRelativeTo(null);//居中
         frame.setVisible(true);
     }

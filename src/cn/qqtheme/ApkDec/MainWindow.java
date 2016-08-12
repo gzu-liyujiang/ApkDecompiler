@@ -1,14 +1,7 @@
 package cn.qqtheme.ApkDec;
 
-import com.jgoodies.forms.layout.CellConstraints;
-import com.jgoodies.forms.layout.FormLayout;
-
 import javax.swing.*;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
 
@@ -16,6 +9,7 @@ import java.net.URL;
  * Created by liyujiang on 16-8-12.
  */
 public class MainWindow {
+    private String toolPath = Constants.TOOL_PATH;
     private JPanel panelRoot;
     private JTextField inputApk;
     private JButton buttonDecodeXml;
@@ -25,45 +19,43 @@ public class MainWindow {
     private JButton buttonOpenFile;
     private String apkPath;
 
-    public MainWindow() {
-        buttonOpenFile.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                chooseApk();
+    private MainWindow() {
+        if (!toolPath.endsWith("/")) {
+            toolPath += "/";
+        }
+        logArea.append("\n\n");
+        //This inspection reports all anonymous classes which can be replaced with lambda expressions
+        //Lambda syntax is not supported under Java 1.7 or earlier JVMs.
+        buttonOpenFile.addActionListener(e -> chooseApk());
+        buttonDecodeXml.addActionListener(e -> {
+            if (apkValid()) {
+
             }
         });
-        buttonDecodeXml.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (apkValid()) {
+        buttonDecodeJar.addActionListener(e -> {
+            if (apkValid()) {
 
-                }
             }
         });
-        buttonDecodeJar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (apkValid()) {
-
-                }
+        buttonJdGui.addActionListener(e -> {
+            String command = toolPath + "tools/jd-gui";
+            logArea.append("exec command: " + command + "\n");
+            try {
+                Runtime.getRuntime().exec(command);
+            } catch (IOException e1) {
+                logArea.append("error: " + e1 + "\n");
             }
-        });
-        buttonJdGui.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String command = "/home/liyujiang/Apps/ApkDecode/jd-gui/jd-gui";
-                try {
-                    Runtime.getRuntime().exec(command);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-
         });
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Apk反编译助手");
-        URL iconUrl = MainWindow.class.getResource("/icons/liyujiang.png");
-        System.out.println(iconUrl);
-        frame.setIconImage(new ImageIcon(iconUrl).getImage());
+        JFrame frame = new JFrame(Constants.APP_NAME + Constants.APP_VERSION);
         MainWindow mainWindow = new MainWindow();
+        URL iconUrl = MainWindow.class.getResource("/icons/liyujiang.png");
+        mainWindow.logArea.append("icon path: " + iconUrl + "\n");
+        if (iconUrl != null) {
+            frame.setIconImage(new ImageIcon(iconUrl).getImage());
+        }
         frame.setContentPane(mainWindow.panelRoot);
         frame.setJMenuBar(mainWindow.createMenuBar());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,25 +69,29 @@ public class MainWindow {
     private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
         JMenu menuMain = new JMenu("菜单");
-        JMenuItem menuOpenFIle = new JMenuItem("打开");
-        menuOpenFIle.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                chooseApk();
-            }
-        });
+        JMenuItem menuHelp = new JMenuItem("帮助");
+        menuHelp.addActionListener(e -> help());
         JMenuItem menuAbout = new JMenuItem("关于");
-        menuAbout.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(panelRoot, "开发工具：Intellij IDEA 2016.2.1\n\n" +
-                        "制作：穿青人@李玉江[QQ:1032694760]");
-            }
-        });
-        menuMain.add(menuOpenFIle);
+        menuAbout.addActionListener(e -> about());
+        menuMain.add(menuHelp);
         menuMain.add(menuAbout);
         menuBar.add(menuMain);
         return menuBar;
+    }
+
+    private void help() {
+        JOptionPane.showMessageDialog(panelRoot,
+                "1、点击浏览选择一个需要反编译的apk文件；\n" +
+                        "2、点击反编译xml以及dex2jar；\n" +
+                        "3、点击打开jd-gui，查看反编译后的jar的源代码。\n",
+                "帮助", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void about() {
+        JOptionPane.showMessageDialog(panelRoot,
+                "开发工具：Intellij IDEA 2016.2.1\n\n" +
+                        "制作：穿青人@李玉江[QQ:1032694760]",
+                "关于", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void chooseApk() {

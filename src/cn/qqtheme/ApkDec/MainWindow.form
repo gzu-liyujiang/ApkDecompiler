@@ -58,7 +58,8 @@
             <constraints/>
             <properties>
               <editable value="false"/>
-              <text value="欢迎使用♪(^∇^*)"/>
+              <lineWrap value="true"/>
+              <text value="欢迎使用♪(^∇^*)使用方法可查看点击菜单查看帮助。"/>
               <toolTipText value="运行日志控制台"/>
             </properties>
           </component>

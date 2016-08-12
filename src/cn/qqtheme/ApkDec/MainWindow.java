@@ -132,13 +132,14 @@ public class MainWindow {
                 "1、点击浏览选择一个需要反编译的apk文件；\n" +
                         "2、点击反编译xml以及dex2jar；\n" +
                         "3、点击打开jd-gui，查看反编译后的jar的源代码。\n",
-                "帮助", JOptionPane.INFORMATION_MESSAGE);
+                "帮助", JOptionPane.QUESTION_MESSAGE,
+                new ImageIcon(appPath + "icons/liyujiang.png"));
     }
 
     private void about() {
         JOptionPane.showMessageDialog(panelRoot,
                 "开发工具：Intellij IDEA 2016.2.1\n" +
-                        "测试系统：Ubuntu/ChaletOS 16.04\n\n" +
+                        "测试系统：ChaletOS 16.04.2 (Xubuntu)\n\n" +
                         "制作：穿青人@李玉江[QQ:1032694760]",
                 "关于", JOptionPane.INFORMATION_MESSAGE,
                 new ImageIcon(appPath + "icons/liyujiang.png")

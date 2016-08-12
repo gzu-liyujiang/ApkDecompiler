@@ -4,50 +4,31 @@ import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
 import javax.swing.*;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * Created by liyujiang on 16-8-12.
  */
 public class MainWindow {
     private JPanel panelRoot;
-    private JButton buttonChoose;
-    private JButton buttonConfig;
-    private JButton buttonAbout;
     private JTextField inputApk;
     private JButton buttonDecodeXml;
     private JButton buttonDecodeJar;
     private JButton buttonJdGui;
     private JTextArea logArea;
+    private JButton buttonOpenFile;
     private String apkPath;
 
     public MainWindow() {
-        buttonAbout.addActionListener(new ActionListener() {
+        buttonOpenFile.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(panelRoot, "开发工具：Intellij IDEA 2016.2.1\n\n" +
-                        "制作：穿青人@李玉江[QQ:1032694760]");
-            }
-        });
-        buttonConfig.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Object input = JOptionPane.showInputDialog(panelRoot, "请输入工具包根目录路径", "/home/liyujiang/Apps/ApkDecode/");
-            }
-        });
-        buttonChoose.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser chooser = new JFileChooser();
-                chooser.setAcceptAllFileFilterUsed(false);
-                chooser.setMultiSelectionEnabled(false);
-                chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                chooser.setFileFilter(new ApkFilter());
-                int flag = chooser.showOpenDialog(panelRoot);
-                if (flag == JFileChooser.APPROVE_OPTION) {
-                    apkPath = chooser.getSelectedFile().getAbsolutePath();
-                    inputApk.setText(apkPath.replaceAll("\\\\", "/"));
-                }
+                chooseApk();
             }
         });
         buttonDecodeXml.addActionListener(new ActionListener() {
@@ -66,7 +47,7 @@ public class MainWindow {
         });
         buttonJdGui.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String command = "/home/liyujiang/Apps/ApkDecode/gd-gui/gd-gui";
+                String command = "/home/liyujiang/Apps/ApkDecode/jd-gui/jd-gui";
                 try {
                     Runtime.getRuntime().exec(command);
                 } catch (IOException e1) {
@@ -79,77 +60,63 @@ public class MainWindow {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Apk反编译助手");
-        frame.setContentPane(new MainWindow().panelRoot);
+        URL iconUrl = MainWindow.class.getResource("/icons/liyujiang.png");
+        System.out.println(iconUrl);
+        frame.setIconImage(new ImageIcon(iconUrl).getImage());
+        MainWindow mainWindow = new MainWindow();
+        frame.setContentPane(mainWindow.panelRoot);
+        frame.setJMenuBar(mainWindow.createMenuBar());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setMinimumSize(new Dimension(480, 320));
+        frame.setSize(new Dimension(480, 320));
+        frame.setResizable(false);//不允许缩放
         frame.setLocationRelativeTo(null);//居中
         frame.setVisible(true);
     }
 
+    private JMenuBar createMenuBar() {
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menuMain = new JMenu("菜单");
+        JMenuItem menuOpenFIle = new JMenuItem("打开");
+        menuOpenFIle.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chooseApk();
+            }
+        });
+        JMenuItem menuAbout = new JMenuItem("关于");
+        menuAbout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(panelRoot, "开发工具：Intellij IDEA 2016.2.1\n\n" +
+                        "制作：穿青人@李玉江[QQ:1032694760]");
+            }
+        });
+        menuMain.add(menuOpenFIle);
+        menuMain.add(menuAbout);
+        menuBar.add(menuMain);
+        return menuBar;
+    }
+
+    private void chooseApk() {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setAcceptAllFileFilterUsed(false);
+        chooser.setMultiSelectionEnabled(false);
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.setFileFilter(new ApkFilter());
+        int flag = chooser.showOpenDialog(panelRoot);
+        if (flag == JFileChooser.APPROVE_OPTION) {
+            apkPath = chooser.getSelectedFile().getAbsolutePath();
+            inputApk.setText(apkPath.replaceAll("\\\\", "/"));
+        }
+    }
+
     private boolean apkValid() {
         if (apkPath == null || apkPath.trim().length() == 0) {
-            JOptionPane.showMessageDialog(panelRoot, "清先选择要反编译的apk文件");
+            JOptionPane.showMessageDialog(panelRoot, "请先选择要反编译的apk文件");
             return false;
         }
         return true;
     }
 
-    {
-// GUI initializer generated by IntelliJ IDEA GUI Designer
-// >>> IMPORTANT!! <<<
-// DO NOT EDIT OR ADD ANY CODE HERE!
-        $$$setupUI$$$();
-    }
-
-    /**
-     * Method generated by IntelliJ IDEA GUI Designer
-     * >>> IMPORTANT!! <<<
-     * DO NOT edit this method OR call it in your code!
-     *
-     * @noinspection ALL
-     */
-    private void $$$setupUI$$$() {
-        panelRoot = new JPanel();
-        panelRoot.setLayout(new FormLayout("fill:max(d;4px):noGrow,left:4dlu:noGrow,fill:d:grow,left:4dlu:noGrow,fill:max(d;4px):noGrow", "center:d:noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow"));
-        panelRoot.setMaximumSize(new Dimension(1090, 1208));
-        panelRoot.setMinimumSize(new Dimension(320, 240));
-        final JToolBar toolBar1 = new JToolBar();
-        CellConstraints cc = new CellConstraints();
-        panelRoot.add(toolBar1, cc.xyw(1, 1, 5, CellConstraints.FILL, CellConstraints.DEFAULT));
-        buttonChoose = new JButton();
-        buttonChoose.setText("打开");
-        buttonChoose.setToolTipText("选择要反编译的apk文件");
-        toolBar1.add(buttonChoose);
-        buttonConfig = new JButton();
-        buttonConfig.setText("配置");
-        toolBar1.add(buttonConfig);
-        buttonAbout = new JButton();
-        buttonAbout.setText("关于");
-        toolBar1.add(buttonAbout);
-        inputApk = new JTextField();
-        inputApk.setEditable(false);
-        inputApk.setEnabled(true);
-        inputApk.setText("");
-        inputApk.setToolTipText("待反编译的apk路径");
-        panelRoot.add(inputApk, cc.xyw(3, 3, 3, CellConstraints.FILL, CellConstraints.DEFAULT));
-        final JToolBar toolBar2 = new JToolBar();
-        panelRoot.add(toolBar2, cc.xy(3, 5, CellConstraints.CENTER, CellConstraints.DEFAULT));
-        buttonDecodeXml = new JButton();
-        buttonDecodeXml.setText("反编译xml");
-        toolBar2.add(buttonDecodeXml);
-        buttonDecodeJar = new JButton();
-        buttonDecodeJar.setText("dex转jar");
-        toolBar2.add(buttonDecodeJar);
-        buttonJdGui = new JButton();
-        buttonJdGui.setText("打开gd-gui");
-        toolBar2.add(buttonJdGui);
-    }
-
-    /**
-     * @noinspection ALL
-     */
-    public JComponent $$$getRootComponent$$$() {
-        return panelRoot;
-    }
 }

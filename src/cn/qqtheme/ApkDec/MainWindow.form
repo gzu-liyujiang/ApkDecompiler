@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="cn.qqtheme.ApkDec.MainWindow">
   <grid id="27dc6" binding="panelRoot" layout-manager="FormLayout">
-    <rowspec value="center:d:noGrow"/>
-    <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:d:grow"/>
-    <colspec value="fill:max(d;4px):noGrow"/>
     <colspec value="left:4dlu:noGrow"/>
     <colspec value="fill:d:grow"/>
     <colspec value="left:4dlu:noGrow"/>
     <colspec value="fill:max(d;4px):noGrow"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="500" height="428"/>
     </constraints>
     <properties>
       <maximumSize width="1090" height="1208"/>
@@ -22,92 +19,89 @@
     </properties>
     <border type="none"/>
     <children>
-      <toolbar id="ed800">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="-1" height="20"/>
-          </grid>
-          <forms defaultalign-horz="false"/>
-        </constraints>
-        <properties/>
-        <border type="none"/>
-        <children>
-          <component id="16144" class="javax.swing.JButton" binding="buttonChoose">
-            <constraints/>
-            <properties>
-              <text value="打开"/>
-              <toolTipText value="选择要反编译的apk文件"/>
-            </properties>
-          </component>
-          <component id="b990c" class="javax.swing.JButton" binding="buttonConfig">
-            <constraints/>
-            <properties>
-              <text value="配置"/>
-            </properties>
-          </component>
-          <component id="eef38" class="javax.swing.JButton" binding="buttonAbout">
-            <constraints/>
-            <properties>
-              <text value="关于"/>
-            </properties>
-          </component>
-        </children>
-      </toolbar>
       <component id="1a15c" class="javax.swing.JTextField" binding="inputApk">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
-          <forms defaultalign-horz="false"/>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties>
+          <autoscrolls value="false"/>
           <editable value="false"/>
           <enabled value="true"/>
+          <foreground color="-8618884"/>
+          <margin top="5" left="3" bottom="5" right="3"/>
           <text value=""/>
           <toolTipText value="待反编译的apk路径"/>
         </properties>
       </component>
-      <toolbar id="ac838">
+      <component id="62ec8" class="javax.swing.JButton" binding="buttonOpenFile">
         <constraints>
-          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="-1" height="20"/>
-          </grid>
-          <forms defaultalign-horz="false"/>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text value="浏览… "/>
+          <toolTipText value="选择要反编译的apk文件"/>
+        </properties>
+      </component>
+      <scrollpane id="bd756">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="1a548" class="javax.swing.JTextArea" binding="logArea">
+            <constraints/>
+            <properties>
+              <editable value="false"/>
+              <text value="欢迎使用♪(^∇^*)"/>
+              <toolTipText value="运行日志控制台"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <grid id="baf2a" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms/>
         </constraints>
         <properties/>
         <border type="none"/>
         <children>
           <component id="4b566" class="javax.swing.JButton" binding="buttonDecodeXml">
-            <constraints/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
             <properties>
               <text value="反编译xml"/>
+              <toolTipText value="从apk文件中把二进制的xml、arsc等资源文件转换为文本格式"/>
             </properties>
           </component>
           <component id="e5960" class="javax.swing.JButton" binding="buttonDecodeJar">
-            <constraints/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
             <properties>
               <text value="dex转jar"/>
+              <toolTipText value="从apk文件中把dex转换为jar文件"/>
             </properties>
           </component>
           <component id="1b93a" class="javax.swing.JButton" binding="buttonJdGui">
-            <constraints/>
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
             <properties>
-              <text value="打开gd-gui"/>
+              <text value="打开jd-gui"/>
+              <toolTipText value="打开jd-gui，查看jar里的源代码，从而另存为java文件"/>
             </properties>
           </component>
         </children>
-      </toolbar>
-      <component id="1a548" class="javax.swing.JTextArea" binding="logArea">
-        <constraints>
-          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-          <forms defaultalign-horz="false" defaultalign-vert="false"/>
-        </constraints>
-        <properties>
-          <text value="欢迎使用♪(^∇^*)"/>
-        </properties>
-      </component>
+      </grid>
     </children>
   </grid>
 </form>

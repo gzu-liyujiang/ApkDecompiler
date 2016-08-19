@@ -8,6 +8,8 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * Created by liyujiang on 16-8-12.
+ *
+ * @author liyujiang
  */
 public class MainWindow {
     private String appPath = Constants.APP_PATH;

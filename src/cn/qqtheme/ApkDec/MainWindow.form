@@ -36,11 +36,12 @@
           <component id="1a548" class="javax.swing.JTextArea" binding="logArea">
             <constraints/>
             <properties>
-              <caretPosition value="25"/>
               <columns value="0"/>
               <editable value="false"/>
               <lineWrap value="true"/>
               <margin top="0" left="0" bottom="0" right="0"/>
+              <selectionEnd value="0"/>
+              <selectionStart value="0"/>
               <text value="欢迎使用♪(^∇^*)使用方法可点击菜单查看帮助。"/>
               <toolTipText value=""/>
             </properties>

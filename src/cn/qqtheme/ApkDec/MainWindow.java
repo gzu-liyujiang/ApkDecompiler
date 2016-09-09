@@ -63,7 +63,7 @@ public class MainWindow {
             public void actionPerformed(ActionEvent e) {
                 if (MainWindow.this.apkValid()) {
                     String jarPath = apkPath.replace("apk", "jar");
-                    String cmd = toolPath + "dex2jar/d2j-dex2jar.sh" + " --force --output " + jarPath + " --verbose " + apkPath;
+                    String cmd = toolPath + "dex2jar/d2j-dex2jar.sh" + " --force --output " + jarPath + " --print-ir " + apkPath;
                     new CmdThread(logArea, cmd).start();
                 }
             }
@@ -140,8 +140,8 @@ public class MainWindow {
 
     private void about() {
         JOptionPane.showMessageDialog(panelRoot,
-                "开发工具：Intellij IDEA 2016.2.1\n" +
-                        "测试系统：ChaletOS 16.04.2 (Xubuntu)\n\n" +
+                "开发工具：Intellij IDEA 2016.2\n" +
+                        "测试系统：Ubuntu 16.10 (devel)\n\n" +
                         "制作：穿青人@李玉江[QQ:1032694760]",
                 "关于", JOptionPane.INFORMATION_MESSAGE,
                 new ImageIcon(appPath + "icons/liyujiang.png")

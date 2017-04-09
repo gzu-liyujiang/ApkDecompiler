@@ -22,7 +22,7 @@ public class MainWindow {
     private JTextArea logArea;
     private JButton buttonOpenFile;
     private JButton logClear;
-    private String apkPath;
+    private String filePath;
 
     private MainWindow() {
         logArea.append("\n\n");
@@ -45,15 +45,15 @@ public class MainWindow {
         buttonOpenFile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainWindow.this.chooseApk();
+                MainWindow.this.chooseFile(new String[]{"apk", "jar"});
             }
         });
         buttonDecodeXml.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (MainWindow.this.apkValid()) {
-                    String dirPath = apkPath.replace(".apk", "");
-                    String cmd = toolPath + "apktool/apktool --advanced decode --force --output " + dirPath + " --no-src --frame-path " + toolPath + "apktool/ " + apkPath;
+                if (MainWindow.this.fileValid("apk")) {
+                    String dirPath = filePath.replace(".apk", "");
+                    String cmd = toolPath + "apktool/apktool --advanced decode --force --output " + dirPath + " --no-src --frame-path " + toolPath + "apktool/ " + filePath;
                     new CmdThread(logArea, cmd).start();
                 }
             }
@@ -61,9 +61,9 @@ public class MainWindow {
         buttonDecodeJar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (MainWindow.this.apkValid()) {
-                    String jarPath = apkPath.replace("apk", "jar");
-                    String cmd = toolPath + "dex2jar/d2j-dex2jar.sh" + " --force --output " + jarPath + " --print-ir " + apkPath;
+                if (MainWindow.this.fileValid("apk")) {
+                    String jarPath = filePath.replace("apk", "jar");
+                    String cmd = toolPath + "dex2jar/d2j-dex2jar.sh" + " --force --output " + jarPath + " --print-ir " + filePath;
                     new CmdThread(logArea, cmd).start();
                 }
             }
@@ -71,8 +71,8 @@ public class MainWindow {
         buttonJdGui.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (MainWindow.this.apkValid()) {
-                    openJdGui(apkPath.replace("apk", "jar"));
+                if (MainWindow.this.fileValid("jar")) {
+                    openJdGui(filePath.replace("apk", "jar"));
                 }
             }
         });
@@ -141,30 +141,31 @@ public class MainWindow {
     private void about() {
         JOptionPane.showMessageDialog(panelRoot,
                 "开发工具：Intellij IDEA 2016.2\n" +
-                        "测试系统：Ubuntu 16.10 (devel)\n\n" +
+                        "测试系统：Deepin 15.3 (desktop)\n\n" +
                         "制作：穿青人@李玉江[QQ:1032694760]",
                 "关于", JOptionPane.INFORMATION_MESSAGE,
                 new ImageIcon(appPath + "icons/liyujiang.png")
         );
     }
 
-    private void chooseApk() {
+    private void chooseFile(String[] allowExt) {
         JFileChooser chooser = new JFileChooser();
         chooser.setAcceptAllFileFilterUsed(false);
         chooser.setMultiSelectionEnabled(false);
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        chooser.setFileFilter(new ApkFilter());
+        chooser.setFileFilter(new ExtensionFilter(allowExt));
         int flag = chooser.showOpenDialog(panelRoot);
         if (flag == JFileChooser.APPROVE_OPTION) {
-            apkPath = chooser.getSelectedFile().getAbsolutePath();
-            apkPath = apkPath.replaceAll("\\\\", "/");
-            inputApk.setText(apkPath);
+            filePath = chooser.getSelectedFile().getAbsolutePath();
+            filePath = filePath.replaceAll("\\\\", "/");
+            inputApk.setText(filePath);
         }
     }
 
-    private boolean apkValid() {
-        if (apkPath == null || apkPath.trim().length() == 0) {
-            JOptionPane.showMessageDialog(panelRoot, "请先选择要反编译的apk文件");
+    private boolean fileValid(String ext) {
+        if (filePath == null || !filePath.trim().toLowerCase().endsWith(ext)) {
+            String msg = "请先选择" + ext + "文件";
+            JOptionPane.showMessageDialog(panelRoot, msg);
             return false;
         }
         return true;

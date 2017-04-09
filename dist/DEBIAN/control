@@ -1,0 +1,10 @@
+Package: apkdec
+Version: 1.0.4
+Architecture: all
+Maintainer: liyujiang_tk@yeah.net
+Installed-Size: 9925
+Depends: default-jre,libgtk2.0-0:i386,libxxf86vm1:i386,libsm6:i386,lib32stdc++6
+Section: development
+Priority: optional
+Description: 安卓软件反编译工具，包括apktool、dex2jar、jd-gui的图形化集成
+Homepage: http://qqtheme.cn

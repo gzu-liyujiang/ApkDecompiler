@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=ApkDecompiler
+Name[zh_CN]=APK反编译
+GenericName=反编译安卓软件
+Comment=Apk反编译工具，包括apktool、dex2jar、jd-gui的图形化集成
+Exec=java -jar /opt/ApkDecompiler/ApkDec.jar
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=apkdec
+Categories=Development

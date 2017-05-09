@@ -1,6 +1,6 @@
-#ApkDecompiler
-Linux版apk反编译工具，主要使用GUI包装了以下几个工具。   　　　
-
+# ApkDecompiler
+Linux版apk反编译工具，主要使用GUI包装了以下几个工具。 
+![效果图](/screenshots.png)<br />
 1、反编译资源（可能需要有此框架才能正常反编译：framework-res.apk）
 ./apktool/apktool d ./test.apk
 ```

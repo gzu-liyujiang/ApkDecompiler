@@ -2,7 +2,7 @@
 
 Screenshot
 -----------
-![](/screenshots.png)
+![](/screenshot.png)
 
 Feature
 -------

@@ -1,10 +1,11 @@
 Package: apkdec
-Version: 1.0.4.20190421
+Version: 2.0.0+20190914
 Architecture: all
-Maintainer: liyujiang_tk@yeah.net
-Installed-Size: 9925
+Maintainer: 1032694760@qq.com
+Installed-Size: 11500
 Depends: default-jre
 Section: development
 Priority: optional
-Description: 安卓软件反编译工具，包括apktool、dex2jar、jd-gui的图形化集成
+Essential: no
+Description: 安卓apk反编译工具，包括apktool、dex2jar、jd-gui的图形化集成
 Homepage: http://qqtheme.cn

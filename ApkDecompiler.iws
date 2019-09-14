@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ApkDecompiler:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cbb2d94f-e262-4f41-946d-430fd4289841" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ApkDecompiler.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ApkDecompiler.ipr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ApkDecompiler.iws" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deb.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/opt/ApkDecompiler/tools/jd-gui.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/opt/ApkDecompiler/uninstall.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/qqtheme/ApkDec/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ApkDecompiler_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DebBuild.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DebExtract.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/DEBIAN/control" beforeDir="false" afterPath="$PROJECT_DIR$/dist/DEBIAN/control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/opt/ApkDecompiler/ApkDec.jar" beforeDir="false" afterPath="$PROJECT_DIR$/dist/opt/ApkDecompiler/ApkDec.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/opt/ApkDecompiler/tools/jd-gui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/opt/ApkDecompiler/tools/jd-gui.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/usr/share/applications/ApkDecompiler.desktop" beforeDir="false" afterPath="$PROJECT_DIR$/dist/usr/share/applications/ApkDecompiler.desktop" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jgoodies-common-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jgoodies-common.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jgoodies-common.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jgoodies-forms-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jgoodies-forms.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jgoodies-forms.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots.png" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/qqtheme/ApkDec/CmdThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/qqtheme/ApkDec/CmdThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/qqtheme/ApkDec/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/qqtheme/ApkDec/ExtensionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/qqtheme/ApkDec/ExtensionFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/qqtheme/ApkDec/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/qqtheme/ApkDec/MainWindow.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/qqtheme/ApkDec/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/qqtheme/ApkDec/MainWindow.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Qo6D6fmeEPYWhjfy1niW2IsNEL" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dist/opt/ApkDecompiler/tools" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="flutter.settings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dist/opt/ApkDecompiler/tools" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dist/opt/ApkDecompiler/tools" />
+      <recent name="$PROJECT_DIR$/dist/opt/ApkDecompiler" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ApkDecompiler" type="Application" factoryName="Application">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="cn.qqtheme.ApkDec.MainWindow" />
+      <module name="ApkDecompiler" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cbb2d94f-e262-4f41-946d-430fd4289841" name="Default Changelist" comment="" />
+      <created>1568424478239</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1568424478239</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

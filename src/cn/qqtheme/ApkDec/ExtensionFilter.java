@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019. Li Yujiang, Chuanqing People. All rights reserved.
+ */
+
 package cn.qqtheme.ApkDec;
 
 import javax.swing.filechooser.FileFilter;
@@ -6,8 +10,9 @@ import java.util.Arrays;
 
 /**
  * 按扩展名过滤文件
- * <p>
- * Created by liyujiang on 16-8-12.
+ * Created by liyujiang on 2016-8-12.
+ *
+ * @author 李玉江[1032694760@qq.com]
  */
 public class ExtensionFilter extends FileFilter {
     private String[] types;

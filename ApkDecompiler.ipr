@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactManager">
+    <artifact type="jar" build-on-make="true" name="ApkDecompiler:jar">
+      <output-path>$PROJECT_DIR$/out/artifacts/ApkDecompiler_jar</output-path>
+      <root id="archive" name="ApkDecompiler.jar">
+        <element id="module-output" name="ApkDecompiler" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/lib/jgoodies-forms.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/lib/jgoodies-common.jar" path-in-jar="/" />
+      </root>
+    </artifact>
+  </component>
+  <component name="CopyrightManager" default="liyujiang">
+    <copyright>
+      <option name="notice" value="Copyright (c) &amp;#36;today.year. Li Yujiang, Chuanqing People. All rights reserved. " />
+      <option name="myName" value="liyujiang" />
+    </copyright>
+    <module2copyright>
+      <element module="Project Files" copyright="liyujiang" />
+    </module2copyright>
+  </component>
+  <component name="Encoding">
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+  <component name="InspectionProjectProfileManager">
+    <profile version="1.0">
+      <option name="myName" value="Project Default" />
+    </profile>
+    <version value="1.0" />
+  </component>
   <component name="Palette2">
     <group name="Swing">
       <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
@@ -121,7 +149,56 @@
       </item>
     </group>
   </component>
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ApkDecompiler.iml" filepath="$PROJECT_DIR$/ApkDecompiler.iml" />
+    </modules>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+  </component>
+  <component name="libraryTable">
+    <library name="lib">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/jgoodies-forms.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/jgoodies-common.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="Copyright.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
   <component name="uidesigner-configuration">
+    <option name="INSTRUMENT_CLASSES" value="false" />
     <option name="DEFAULT_LAYOUT_MANAGER" value="FormLayout" />
   </component>
 </project>

@@ -13,7 +13,6 @@ echo "当前工作目录：${PWD}"
 
 _DEB="out/ApkDecompiler.deb"
 _DIST="dist/"
-_OUT_JAR="out/artifacts/ApkDecompiler_jar/ApkDecompiler.jar"
 
 function extractDeb() {
   echo "解开deb包到${_DIST}"
@@ -26,10 +25,6 @@ function extractDeb() {
 }
 
 function builddDeb() {
-  _APK_DEC="${_DIST}opt/ApkDecompiler/ApkDec.jar"
-  rm ${_APK_DEC}
-  cp ${_OUT_JAR} ${_APK_DEC}
-  chmod +x ${_APK_DEC}
   chmod -R 0755 ${_DIST}DEBIAN
   # dpkg-deb --help
   # 将指定的目录下的所有文件打包为deb格式的文件

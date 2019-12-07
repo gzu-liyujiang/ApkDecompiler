@@ -4,26 +4,14 @@ Screenshot
 -----------
 ![](/screenshot.png)
 
-Feature
--------
-- 从apk中导出文本格式的XML
-- 从apk中导出jar
-- 查看jar源代码
-
 Environment
 -----------
 
     OS: Deepin Desktop 15.11
-    IDE: Intellij IDEA Community 2019.2
-    JVM: OpenJDK 1.8
 
 Thanks
 ------
-Linux版apk反编译工具，主要使用GUI包装了以下几个工具：
-    
-    apktool   用于反编译资源
-    dex2jar   用于将apk转为jar
-    jd-gui    用于查看jar源代码
+Linux版apk反编译工具，参见(jadx)[https://github.com/skylot/jadx]
 
 License
 -------

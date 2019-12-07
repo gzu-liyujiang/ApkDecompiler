@@ -11,7 +11,7 @@ Environment
 
 Thanks
 ------
-Linux版apk反编译工具，参见(jadx)[https://github.com/skylot/jadx]
+Linux版apk反编译工具，参见[jadx](https://github.com/skylot/jadx)
 
 License
 -------
